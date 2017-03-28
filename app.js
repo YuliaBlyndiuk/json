@@ -14,11 +14,12 @@ function getInfoFromApi(searchTerm, callback){
 function displayData(data){
 	var resultItems = "";
 	// We want to find the data for videos that matched the search.
-	// console.log(data);
+	console.log(data);
 	data.items.forEach(function(item){
 		//console.log(item);
 		//console.log(item.snippet.thumbnails.default.url);
-		resultItems += '<div>' + '<img src="' + item.snippet.thumbnails.default.url + '">' + '</div>';
+		console.log(item.id.videoId);
+		resultItems += '<div><a href="https://www.youtube.com/watch?v=' + item.id.videoId + '"><img src="' + item.snippet.thumbnails.default.url + '"><a/></div><div><a href="https://www.youtube.com/channel/' + item.snippet.channelId + '">More</a></div>';
 	})
 	
 	$('.js-search-results').html(resultItems);
